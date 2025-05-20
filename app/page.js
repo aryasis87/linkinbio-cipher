@@ -17,12 +17,20 @@ export default function Home() {
           <Command size={42} className="mx-auto text-green-400" />
           <h1 className="text-2xl font-bold mt-2">root@namaAnda</h1>
           <p className="text-xs text-green-600">Fullstack dev • Ethical Hacker</p>
-          <p className="mt-1 text-green-500 text-sm">"while(alive) {`{ code(); }`}"</p>
+          <p className="mt-1 text-green-500 text-sm italic tracking-wide">
+            {`"while(alive) { code(); }"`}
+          </p>
         </div>
         <div className="space-y-3">
           {links.map(({ label, icon, url }, i) => (
-            <a key={i} href={url} className="block border border-green-600 bg-black px-4 py-2 rounded hover:bg-green-950 transition">
-              <div className="flex items-center gap-3 text-green-300">{icon} <span>{label}</span></div>
+            <a
+              key={i}
+              href={url}
+              className="block border border-green-600 bg-black px-4 py-2 rounded hover:bg-green-950 transition"
+            >
+              <div className="flex items-center gap-3 text-green-300">
+                {icon} <span>{label}</span>
+              </div>
             </a>
           ))}
         </div>
