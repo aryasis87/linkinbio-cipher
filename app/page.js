@@ -1,41 +1,86 @@
 'use client';
+import { useEffect, useState } from 'react';
 
-import { Github, TerminalSquare, Mail, Command, Code2 } from 'lucide-react';
+const LINKS = [
+  { perm: '-rwx', name: 'writeups/', desc: 'CTF & analisis kerentanan', url: '#' },
+  { perm: '-rwx', name: 'tools.sh', desc: 'skrip open-source di GitHub', url: 'https://github.com' },
+  { perm: '-rw-', name: 'blog.md', desc: 'catatan keamanan (ID/EN)', url: '#' },
+  { perm: '-rw-', name: 'talks.pdf', desc: 'slide seminar & workshop', url: '#' },
+  { perm: '-r--', name: 'contact.gpg', desc: 'c1ph3r@proton.me — PGP tersedia', url: 'mailto:c1ph3r@proton.me' },
+];
+
+const BANNER = 'whoami';
+const OUT = 'c1ph3r — security researcher · CTF player · bug hunter (etis, kok)';
 
 export default function Home() {
-  const links = [
-    { label: 'GitHub', icon: <Github size={18} />, url: '#' },
-    { label: 'Terminal Logs', icon: <TerminalSquare size={18} />, url: '#' },
-    { label: 'Email', icon: <Mail size={18} />, url: 'mailto:hack@darkweb.com' },
-  ];
+  const [typed, setTyped] = useState('');
+  const [showOut, setShowOut] = useState(false);
+  const [showLs, setShowLs] = useState(false);
+
+  useEffect(() => {
+    let i = 0;
+    const t = setInterval(() => {
+      i++;
+      setTyped(BANNER.slice(0, i));
+      if (i >= BANNER.length) {
+        clearInterval(t);
+        setTimeout(() => setShowOut(true), 250);
+        setTimeout(() => setShowLs(true), 700);
+      }
+    }, 110);
+    return () => clearInterval(t);
+  }, []);
 
   return (
-    <main className="min-h-screen bg-black text-green-400 font-mono flex items-center justify-center px-4">
-      <div className="max-w-md w-full border border-green-600 p-6 rounded-lg shadow-md bg-[#0c0c0c] relative">
-        <div className="absolute top-4 right-4 text-green-700 text-xs">LIVE</div>
-        <div className="text-center mb-6">
-          <Command size={42} className="mx-auto text-green-400" />
-          <h1 className="text-2xl font-bold mt-2">root@namaAnda</h1>
-          <p className="text-xs text-green-600">Fullstack dev • Ethical Hacker</p>
-          <p className="mt-1 text-green-500 text-sm italic tracking-wide">
-            {`"while(alive) { code(); }"`}
+    <main className="flex min-h-screen items-center justify-center px-4 py-10">
+      <div className="crt scanlines relative w-full max-w-2xl rounded-xl border border-fosfor/25 bg-crt">
+        {/* Title bar */}
+        <div className="flex items-center gap-2 border-b border-fosfor/20 px-4 py-3">
+          <span className="h-3 w-3 rounded-full bg-red-500/70" />
+          <span className="h-3 w-3 rounded-full bg-yellow-500/70" />
+          <span className="h-3 w-3 rounded-full bg-green-500/70" />
+          <span className="ml-3 text-xs text-fosfor/50">c1ph3r@links: ~ — 80×24</span>
+        </div>
+
+        <div className="p-5 text-sm leading-relaxed md:p-7">
+          <p className="text-fosfor/50"># Selamat datang. Semua tautan dapat dieksekusi.</p>
+
+          <p className="mt-3"><span className="text-dim">c1ph3r@links</span><span className="text-fosfor/50">:~$</span> {typed}{!showOut && <span className="cursor">▮</span>}</p>
+          {showOut && <p className="rise mt-1 text-fosfor/80">{OUT}</p>}
+
+          {showOut && (
+            <p className="rise mt-4"><span className="text-dim">c1ph3r@links</span><span className="text-fosfor/50">:~$</span> ls -la ./links</p>
+          )}
+
+          {showLs && (
+            <div className="rise mt-2 space-y-0.5">
+              <p className="text-fosfor/40">total {LINKS.length}</p>
+              {LINKS.map((l, i) => (
+                <a
+                  key={l.name}
+                  href={l.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group grid grid-cols-[3.2rem_1fr] items-baseline gap-3 rounded px-2 py-1.5 transition hover:bg-fosfor/10 sm:grid-cols-[3.2rem_11rem_1fr]"
+                  style={{ animationDelay: `${i * 0.08}s` }}
+                >
+                  <span className="text-fosfor/45">{l.perm}</span>
+                  <span className="font-bold text-fosfor underline-offset-4 group-hover:underline">{l.name}</span>
+                  <span className="hidden text-fosfor/55 sm:block"># {l.desc}</span>
+                </a>
+              ))}
+            </div>
+          )}
+
+          {showLs && (
+            <p className="rise mt-4" style={{ animationDelay: '0.5s' }}>
+              <span className="text-dim">c1ph3r@links</span><span className="text-fosfor/50">:~$</span> <span className="cursor">▮</span>
+            </p>
+          )}
+
+          <p className="mt-6 border-t border-fosfor/15 pt-3 text-[11px] text-fosfor/35">
+            uptime {new Date().getFullYear() - 2019}y · GPG 0x4A2F...9C · jangan lupa 2FA 🛡
           </p>
-        </div>
-        <div className="space-y-3">
-          {links.map(({ label, icon, url }, i) => (
-            <a
-              key={i}
-              href={url}
-              className="block border border-green-600 bg-black px-4 py-2 rounded hover:bg-green-950 transition"
-            >
-              <div className="flex items-center gap-3 text-green-300">
-                {icon} <span>{label}</span>
-              </div>
-            </a>
-          ))}
-        </div>
-        <div className="flex items-center justify-center mt-5 gap-2 text-green-500 text-xs">
-          <Code2 size={14} /> made with caffeine & shell
         </div>
       </div>
     </main>

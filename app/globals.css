@@ -1,34 +1,30 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --font-mono: var(--font-jbmono), ui-monospace, monospace;
+  --color-crt: #071008;
+  --color-fosfor: #4ade80;
+  --color-dim: #22c55e;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+:root { color-scheme: dark; }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #04070a;
+  color: var(--color-fosfor);
+  font-family: var(--font-jbmono), ui-monospace, monospace;
+  overflow-x: hidden;
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(10px); }
-}
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
+/* CRT glow + scanlines */
+.crt { box-shadow: 0 0 60px -12px rgba(74, 222, 128, 0.25), inset 0 0 22px rgba(74, 222, 128, 0.06); }
+.scanlines::after { content: ""; position: absolute; inset: 0; pointer-events: none; border-radius: inherit;
+  background: repeating-linear-gradient(0deg, transparent 0 2px, rgba(0, 0, 0, 0.22) 2px 3px); }
+
+@keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+.cursor { animation: blink 1s steps(1) infinite; }
+
+@keyframes rise { from { opacity: 0; } to { opacity: 1; } }
+.rise { animation: rise 0.4s steps(4) both; }
+
+:focus-visible { outline: 1.5px solid var(--color-fosfor); outline-offset: 3px; }
