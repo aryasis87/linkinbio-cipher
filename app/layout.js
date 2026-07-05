@@ -3,10 +3,10 @@ import "./globals.css";
 
 const jbmono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jbmono", weight: ["400", "700"] });
 
-const __jsonld = {"@context":"https://schema.org","@type":"ProfilePage","mainEntity":{"@type":"Person","name":"cipher","jobTitle":"Security Researcher","url":"https://linkinbio-cipher.vercel.app","inLanguage":"id"}};
+const __jsonld = {"@context":"https://schema.org","@type":"ProfilePage","mainEntity":{"@type":"Person","name":"cipher","jobTitle":"Security Researcher","url":"https://cipher.pintuweb.com","inLanguage":"id"}};
 
 export const metadata = {
-  metadataBase: new URL("https://linkinbio-cipher.vercel.app"),
+  metadataBase: new URL("https://cipher.pintuweb.com"),
   title: "cipher — Security Researcher Links",
   description: "Link in bio bergaya terminal untuk security researcher & CTF player: writeups, tools, dan kontak.",
   applicationName: "cipher",
@@ -14,11 +14,11 @@ export const metadata = {
   authors: [{ name: "cipher" }],
   creator: "cipher",
   publisher: "cipher",
-  alternates: { canonical: "https://linkinbio-cipher.vercel.app" },
+  alternates: { canonical: "https://cipher.pintuweb.com" },
   openGraph: {
     type: "website",
     locale: "id_ID",
-    url: "https://linkinbio-cipher.vercel.app",
+    url: "https://cipher.pintuweb.com",
     siteName: "cipher",
     title: "cipher — Security Researcher Links",
     description: "Link in bio bergaya terminal untuk security researcher & CTF player: writeups, tools, dan kontak.",
