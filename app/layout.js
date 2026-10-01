@@ -7,10 +7,10 @@ const __jsonld = {"@context":"https://schema.org","@type":"ProfilePage","mainEnt
 
 export const metadata = {
   metadataBase: new URL("https://linkinbio-cipher.vercel.app"),
-  title: "cipher — Security Researcher Links",
-  description: "Link in bio bergaya terminal untuk security researcher & CTF player: writeups, tools, dan kontak.",
+  title: { default: "c1ph3r — Security Researcher & Pemain CTF", template: "%s — c1ph3r" },
+  description: "Tautan c1ph3r, peneliti keamanan dan pemain CTF: writeup soal CTF, kebijakan pengungkapan 90 hari, jadwal seminar dan workshop, serta formulir kontak — dalam satu terminal.",
   applicationName: "cipher",
-  keywords: ["link in bio", "security researcher", "CTF", "writeups", "hacker portfolio"],
+  keywords: ["security researcher", "writeup ctf", "responsible disclosure", "workshop keamanan siber", "link in bio hacker"],
   authors: [{ name: "cipher" }],
   creator: "cipher",
   publisher: "cipher",
@@ -20,14 +20,14 @@ export const metadata = {
     locale: "id_ID",
     url: "https://linkinbio-cipher.vercel.app",
     siteName: "cipher",
-    title: "cipher — Security Researcher Links",
-    description: "Link in bio bergaya terminal untuk security researcher & CTF player: writeups, tools, dan kontak.",
-    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "cipher — Security Researcher Links" }],
+    title: "c1ph3r — Security Researcher & Pemain CTF",
+    description: "Tautan c1ph3r, peneliti keamanan dan pemain CTF: writeup soal CTF, kebijakan pengungkapan 90 hari, jadwal seminar dan workshop, serta formulir kontak — dalam satu terminal.",
+    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "c1ph3r — Security Researcher & Pemain CTF" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "cipher — Security Researcher Links",
-    description: "Link in bio bergaya terminal untuk security researcher & CTF player: writeups, tools, dan kontak.",
+    title: "c1ph3r — Security Researcher & Pemain CTF",
+    description: "Tautan c1ph3r, peneliti keamanan dan pemain CTF: writeup soal CTF, kebijakan pengungkapan 90 hari, jadwal seminar dan workshop, serta formulir kontak — dalam satu terminal.",
     images: ["/og.jpg"],
   },
   robots: {

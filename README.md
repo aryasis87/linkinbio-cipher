@@ -1,12 +1,12 @@
-# cipher — Security Researcher Links
+# c1ph3r — Security Researcher & Pemain CTF
 
-Link in bio bergaya terminal untuk security researcher & CTF player: writeups, tools, dan kontak.
+Tautan c1ph3r, peneliti keamanan dan pemain CTF: writeup soal CTF, kebijakan pengungkapan 90 hari, jadwal seminar dan workshop, serta formulir kontak — dalam satu terminal.
 
 **Demo live:** https://linkinbio-cipher.vercel.app
 
 ![Tangkapan layar cipher](public/og.jpg)
 
-> Template link-in-bio dengan persona fiktif.
+> Template link-in-bio dengan persona fiktif. Akun, klien, harga, dan jadwal hanya contoh; tautan utama menuju halaman dalam yang benar-benar ada, dan formulir tidak mengirim data.
 
 ## Konsep
 
@@ -14,7 +14,9 @@ Persona c1ph3r, security researcher. Terminal penuh: perintah `whoami` yang dike
 
 ## Halaman
 
-`/`
+- `/` — terminal CRT: ketikan whoami, daftar ls -la berbit izin; tautan tetap ada di HTML awal (tidak bergantung JavaScript)
+- `/writeups` — empat writeup CTF fiktif dan kebijakan pengungkapan
+- `/talks` — seminar & workshop Okt–Des 2026, formulir kontak bergaya perintah terminal
 
 ## Teknologi
 
